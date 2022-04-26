@@ -10,6 +10,9 @@ class Game {
     this.weapons = null;
     this.color = "";
     this.intervalId = null;
+    this.timeOutEnemies = null;
+    this.frames = 0;
+    this.enemies = [];
     this.board = [
       { x: 100, y: 50 },
       { x: 100, y: 250 },
@@ -21,6 +24,7 @@ class Game {
       { x: 700, y: 250 },
       { x: 700, y: 450 },
     ];
+    this.timeOut = null;
   }
 
   drawCanvas() {
@@ -33,23 +37,30 @@ class Game {
     this.weapons = new Weapons(this);
     this.controls = new Controls(this.weapons);
     this.controls.keyboardEvents();
-
     this.intervalId = setInterval(() => {
       this.update();
     }, 1000 / 60);
   }
-  /* pickOne() {
-    this.board().forEach((el) => {});
-     pickOne() {
-      Math.random(this.board){
-        this.ctx.fillRect('red')
-        this.ctx.clearRect()
-      }
-    }
-  } */
 
   update() {
+    this.ctx.clearRect(0, 0, this.width, this.heigth);
+    this.frames++;
     this.drawCanvas();
-    this.weapons.draw();
+    this.weapons.draw(this.weapons);
+    this.createEnemies();
+    this.enemies.forEach((square) => {
+      square.drawEnemies();
+    });
   }
+  createEnemies() {
+    if (this.frames % 100 === 0) {
+      this.enemies = [];
+      this.enemies.push(new Enemy(this));
+    }
+    /* this.timeOutEnemies = setTimeout(() => {
+      this.enemies.drawEnemies();
+    }); */
+  }
+
+  checkColision() {}
 }

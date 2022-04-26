@@ -3,8 +3,8 @@ class Weapons {
     this.game = game;
     this.x = 450;
     this.y = 300;
-    this.width = 75;
-    this.height = 75;
+    this.width = 0;
+    this.height = 0;
     this.img = new Image();
     this.color = "";
   }
@@ -14,19 +14,19 @@ class Weapons {
   }
 
   moveLeft() {
-    this.x -= 10;
+    this.x -= 25;
   }
 
   moveRigth() {
-    this.x += 10;
+    this.x += 25;
   }
 
   moveUp() {
-    this.y -= 10;
+    this.y -= 25;
   }
 
   moveDown() {
-    this.y += 10;
+    this.y += 25;
   }
 
   left() {
