@@ -7,6 +7,12 @@ body {
   display: flex;
   margin-left: 120px;
   margin-top: 35px;
+  /* background-image: url(/docs/images/predio.jpg);
+  background-size: contain;
+  background-repeat: ;
+  width: fit-content; */
+  background-image: url(/docs/assets/images/city.jpg);
+  background-size: cover;
 }
 
 #start-btn {
@@ -22,7 +28,7 @@ body {
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-  align-content: stretch;
+  /* align-content: stretch; */
 }
 
 #game-intro > p {
