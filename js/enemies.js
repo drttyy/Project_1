@@ -12,8 +12,6 @@ class Enemy {
   }
 
   drawEnemies() {
-    /* this.game.ctx.fillStyle = "red";
-    this.game.ctx.fillRect(this.x, this.y, this.height, this.width); */
     this.img.src = this.src;
     this.game.ctx.drawImage(this.img, this.x, this.y, 100, 100);
   }

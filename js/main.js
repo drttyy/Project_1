@@ -4,7 +4,6 @@ window.onload = () => {
   };
 
   let game = null;
-
   function startGame() {
     if (!game) {
       game = new Game();

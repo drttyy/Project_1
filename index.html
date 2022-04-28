@@ -5,17 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>whack them all</title>
+    <title>Hit the curious</title>
   </head>
   <body>
     <div id="game-intro">
-      <h1>Hit the curious</h1>
+      <h1 id="title">Hit the curious !</h1>
       <button id="start-btn">Start Game</button>
     </div>
-    <p id="score">score:</p>
-    <br />
-    <p id="lifes">lifes:</p>
-    <br />
     <div id="game-screen">
       <canvas
         id="canvas"
@@ -24,6 +20,12 @@
         style="border: 2px solid black"
       >
       </canvas>
+    </div>
+    <div id="scores-lifes">
+      <p id="score">score:</p>
+      <br />
+      <p id="lifes">lifes:</p>
+      <br />
     </div>
     <script src="js/enemies.js"></script>
     <script src="js/controls.js"></script>

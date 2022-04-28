@@ -35,9 +35,6 @@ class Game {
 
   drawCanvas() {
     this.board.forEach((square) => {
-      /* this.background.src = "./docs/assets/images/background-predio.webp"; */
-      /* this.ctx.fillRect(square.x, square.y, 100, 100);
-      this.ctx.fillStyle = "white"; */
       this.img.src = "./docs/assets/images/janela.png";
       this.ctx.drawImage(this.img, square.x - 25, square.y - 25, 150, 150);
     });
@@ -125,17 +122,11 @@ class Game {
   }
 
   drawScores() {
-    /* this.ctx.font = "32px serif";
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText(`Score: ${this.score}`, 200, 50); */
     let scoreP = document.getElementById("score");
     scoreP.innerHTML = `Score: ${this.score}`;
   }
 
   drawLifes() {
-    /* this.ctx.font = "32px serif";
-    this.ctx.fillStyle = "Red";
-    this.ctx.fillText(`Lifes: ${this.lifes}`, 400, 50); */
     let lifesP = document.getElementById("lifes");
     lifesP.innerHTML = `Lifes: ${this.lifes}`;
   }
