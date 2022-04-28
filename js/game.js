@@ -31,6 +31,7 @@ class Game {
     this.img = new Image();
     this.background = new Image();
     this.countdown = 120;
+    this.isRunning = false;
   }
 
   drawCanvas() {
@@ -41,12 +42,21 @@ class Game {
   }
 
   start() {
+    this.isRunning = true;
     this.weapons = new Weapons(this);
     this.controls = new Controls(this.weapons, this);
     this.controls.keyboardEvents();
     this.intervalId = setInterval(() => {
       this.update();
     }, 1000 / 60);
+
+    /* this.isRunning = true;
+    this.weapons = new Weapons(this);
+    this.controls = new Controls(this.weapons, this);
+    this.controls.keyboardEvents();
+    this.intervalId = setInterval(() => {
+      this.update();
+    }, 1000 / 60); */
   }
 
   update() {
@@ -66,8 +76,8 @@ class Game {
     this.drawScores();
     this.drawLifes();
     this.timer();
-    this.checkGameWin(this.game);
-    this.checkGameOver(this.game);
+    this.checkGameWin();
+    this.checkGameOver();
   }
   createEnemies() {
     if (this.frames % 110 === 0) {
@@ -106,19 +116,28 @@ class Game {
   checkGameWin() {
     if (this.score === 20) {
       this.stop();
+      /* this.showHighScores(); */
+      this.isRunning = false;
     }
   }
 
   checkGameOver() {
     if (this.lifes === 0) {
       this.stop();
+      this.isRunning = false;
+      this.gameOver();
+      /* this.showHighScores() */
     }
     if (this.timer() === 0) {
       this.stop();
+      /* this.showHighScores(); */
+      this.isRunning = false;
+      this.gameOver();
     }
   }
   stop() {
     clearInterval(this.intervalId);
+    /*  document.getElementById("reset-btn").classList.remove("hidden"); */
   }
 
   drawScores() {
@@ -131,7 +150,7 @@ class Game {
     lifesP.innerHTML = `Lifes: ${this.lifes}`;
   }
   drawBackground() {
-    this.background.src = "./docs/assets/images/background-predio.webp";
+    this.background.src = "./docs/assets/images/wallbackground2.jpg";
     this.ctx.drawImage(
       this.background,
       this.x,
@@ -142,8 +161,49 @@ class Game {
   }
 
   timer() {
-    this.ctx.font = "25px serif";
+    this.ctx.font = "25px Patrick Hand";
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`Time: ${this.countdown}`, 775, 25);
   }
+  gameOver() {
+    this.ctx.font = "50px Patrick Hand";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText(`GAME OVER!!`, 350, 220);
+  }
 }
+
+/* checkHighScore() {
+    this.numberHS = "highScores";
+    const highScoreString = localStorage.getItem(this.numberHS);
+    let lowestScore = 0;
+    if (highScoreString) {
+      this.numberHS = JSON.parse(highScoreString);
+      lowestScore = this.numberHS[this.numberHS.length - 1].score;
+    }
+    if (this.score > lowestScore) {
+      this.saveHighScore(this.score, highScores);
+      this.showHighScores();
+    }
+  }
+
+  saveHighScore(score, highScores) {
+    prompt(`You got a highscore! Enter name:`);
+    const newScore = { score };
+    // 1. Add to list
+    this.numberHs.push();
+    // 2. Sort the list
+    highScores.sort((a, b) => b.score - a.score);
+    // 3. Select new list
+    highScores.splice(N);
+    // 4. Save to local storage
+    localStorage.setItem(this.numberHS, JSON.stringify(highScores));
+  }
+  showHighScores() {
+    this.numberHS = "highScores";
+    const highScores = JSON.parse(localStorage.getItem(this.numberHS));
+    const highScoreList = document.getElementById("highScores");
+    highScoreList.innerHTML = highScores
+      .map((score) => `<li>${score.score} - ${score.name}`)
+      .join("");
+  }
+} */
