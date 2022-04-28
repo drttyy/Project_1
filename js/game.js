@@ -80,11 +80,11 @@ class Game {
     this.checkGameOver();
   }
   createEnemies() {
-    if (this.frames % 110 === 0) {
+    if (this.frames % 120 === 0) {
       this.enemies = [];
       this.enemies.push(new Enemy(this, "./docs/assets/images/enemies.png"));
     }
-    if (this.frames % 110 === 0) {
+    if (this.frames % 120 === 0) {
       this.grandma = [];
       this.grandma.push(new Enemy(this, "./docs/assets/images/avozinha.png"));
     }
@@ -167,8 +167,8 @@ class Game {
   }
   gameOver() {
     this.ctx.font = "50px Patrick Hand";
-    this.ctx.fillStyle = "red";
     this.ctx.fillText(`GAME OVER!!`, 350, 220);
+    this.ctx.fillStyle = "white";
   }
 }
 
