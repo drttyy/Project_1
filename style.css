@@ -32,7 +32,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap-reverse;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: stretch;
   align-content: flex-end;
 }
@@ -62,11 +62,6 @@ body {
   height: 10px;
   border: 5px solid black;
   display: flex;
-}
-
-#game-intro > img {
-  display: flex;
-  height: 200px;
 }
 
 #score {
