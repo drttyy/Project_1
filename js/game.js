@@ -30,6 +30,7 @@ class Game {
     this.score = 0;
     this.img = new Image();
     this.background = new Image();
+    this.countdown = 120;
   }
 
   drawCanvas() {
@@ -54,6 +55,7 @@ class Game {
   update() {
     this.ctx.clearRect(0, 0, this.width, this.heigth);
     this.drawBackground();
+    this.countdown = 120 - Math.floor(this.frames / 60);
     this.frames++;
     this.enemies.forEach((square) => {
       square.drawEnemies();
@@ -66,17 +68,18 @@ class Game {
     this.createEnemies();
     this.drawScores();
     this.drawLifes();
+    this.timer();
     this.checkGameWin(this.game);
     this.checkGameOver(this.game);
   }
   createEnemies() {
     if (this.frames % 110 === 0) {
       this.enemies = [];
-      this.enemies.push(new Enemy(this, "/docs/assets/images/enemies.png"));
+      this.enemies.push(new Enemy(this, "./docs/assets/images/enemies.png"));
     }
     if (this.frames % 110 === 0) {
       this.grandma = [];
-      this.grandma.push(new Enemy(this, "/docs/assets/images/avozinha.png"));
+      this.grandma.push(new Enemy(this, "./docs/assets/images/avozinha.png"));
     }
   }
 
@@ -113,6 +116,9 @@ class Game {
     if (this.lifes === 0) {
       this.stop();
     }
+    if (this.timer() === 0) {
+      this.stop();
+    }
   }
   stop() {
     clearInterval(this.intervalId);
@@ -142,5 +148,11 @@ class Game {
       this.width,
       this.heigth
     );
+  }
+
+  timer() {
+    this.ctx.font = "25px serif";
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText(`Time: ${this.countdown}`, 775, 25);
   }
 }

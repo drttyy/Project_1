@@ -12,7 +12,7 @@ class Weapons {
   draw() {
     /* this.game.ctx.fillStyle = "Black";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height); */
-    this.img.src = "/docs/assets/images/hammer.png";
+    this.img.src = "./docs/assets/images/hammer.png";
     this.game.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
   }
 

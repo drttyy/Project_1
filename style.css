@@ -11,7 +11,7 @@ body {
   background-size: contain;
   background-repeat: ;
   width: fit-content; */
-  background-image: url(/docs/assets/images/city.jpg);
+  background-image: url(docs/assets/images/city.jpg);
   background-size: cover;
 }
 
